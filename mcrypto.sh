@@ -3,8 +3,14 @@
 temp1=/tmp/mcrypto_1_$$
 temp2=/tmp/mcrypto_2_$$
 temp3=/tmp/mcrypto_3_$$
+dconfs=/tmp/mcrypto_dconf_$$
+
+cat ~/.dialogrc > $dconfs
+cp .dialogrc ~/.dialogrc
 
 clear;
+
+trap quit INT
 
 quit()
 {
@@ -18,11 +24,16 @@ quit()
     rm $temp3
   fi
   clear;
+  rm ~/.dialogrc
+  touch ~/.dialogrc
+  cat $dconfs > ~/.dialogrc
+  if [[ -f $dconfs ]]; then
+    rm $dconfs
+  fi
   exit;
 }
 
-
-dialog --menu "MCrypto - Secure File Encryption" 20 40 6 1 "Encrypt File" 2 "Decrypt File" 3 "Add Someone Else's Key" 4 "Send My Key to Someone Else" 5 "Create a Key" 6 "Show All Keys" 2> $temp1
+dialog --menu "MCrypto - Secure File Encryption" 20 40 8 1 "Encrypt" 2 "Decrypt" 3 "Add Someone Else's Key" 4 "Send My Key to Someone Else" 5 "Create a New Key" 6 "Show All Keys" 7 "Help" 2> $temp1
 
 if [[ $? = "0" ]]; then
   RESULT=$(cat $temp1)
