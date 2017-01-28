@@ -31,4 +31,9 @@ fi
 
 echo "All dependencies good to go."
 
+which bash 
+
+mkdir ~/.mcrypto
+
+
 #cat .aliases >> $startfile
