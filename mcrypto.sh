@@ -8,19 +8,6 @@ clear;
 
 quit()
 {
-  rm -f $temp1; rm -f $temp2; rm -f $temp3
-  exit;
-}
-
-w=$(tput cols)
-h=$(tput lines)
-buffer=10
-
-dialog --menu "MCrypto - Secure File Encryption" 20 40 6 1 "Encrypt File" 2 "Decrypt File" 3 "Add Someone Else's Key" 4 "Send My Key to Someone Else" 5 "Create a Key" 6 "Show All Keys" 2> $temp1
-
-if [[ $? = "0" ]]; then
-  echo "pressed"
-else
   if [[ -f $temp1 ]]; then
     rm $temp1
   fi
@@ -30,4 +17,24 @@ else
   if [[ -f $temp3 ]]; then
     rm $temp3
   fi
+  clear;
+  exit;
+}
+
+
+dialog --menu "MCrypto - Secure File Encryption" 20 40 6 1 "Encrypt File" 2 "Decrypt File" 3 "Add Someone Else's Key" 4 "Send My Key to Someone Else" 5 "Create a Key" 6 "Show All Keys" 2> $temp1
+
+if [[ $? = "0" ]]; then
+  RESULT=$(cat $temp1)
+  case $RESULT in
+  	1) echo "encrypt" ;;
+  	2) echo "decrypt" ;;
+  	3) echo "addkey" ;;
+  	4) echo "sendkey" ;;
+  	5) echo "makekey" ;;
+  	6) echo "showkeys" ;;
+  	*) exit ;;
+  esac
+else
+  quit
 fi
