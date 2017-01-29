@@ -27,6 +27,7 @@ function encrypt()
 }
 
 mkdir $tempdir $encdir $decdir $tardir
+ruby updatechecker.rb
 while true; do
   cat ~/.dialogrc > $dconfs
   cp .dialogrc ~/.dialogrc
