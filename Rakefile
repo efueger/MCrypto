@@ -1,5 +1,5 @@
 task default: %w[test]
 
 task :test do
-  ruby "/src/*.rb"
+  ruby "/src/updatechecker.rb"
 end
