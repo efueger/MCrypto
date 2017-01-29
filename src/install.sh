@@ -74,7 +74,7 @@ install ()
   esac
   echo "MCryto installation sucessful!"
   read -p "Press [Enter] to reload the terminal."
-  osascript relaunch_termapp.scpt
+  osascript relaunchTerm.applescript
 
 }
 
