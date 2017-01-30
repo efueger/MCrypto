@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ver=$(cat currentversion.conf)
+VER=$(cat currentversion.conf)
 mainmen=/tmp/mcrypto_1_$$
 keyfile=/tmp/mcrypto_2_$$
 temp3=/tmp/mcrypto_3_$$
@@ -39,7 +39,7 @@ ruby updatechecker.rb
 while true; do
   cat ~/.dialogrc > $dconfs
   cp .dialogrc ~/.dialogrc
-  dialog --ok-label "Select" --cancel-label "Exit"  --menu "  MCrypto - Secure File Encryption" 20 40 8 🔐 "Encrypt" 🔓 "Decrypt" ↓ "Add Someone Else's Key" ↑ "Send My Key to Someone Else" + "Create a New Key" \* "Show All Keys" \? "Help" 2> $mainmen
+  dialog --title $VER --ok-label "Select" --cancel-label "Exit"  --menu "  MCrypto - Secure File Encryption" 20 40 8 🔐 "Encrypt" 🔓 "Decrypt" ↓ "Add Someone Else's Key" ↑ "Send My Key to Someone Else" + "Create a New Key" \* "Show All Keys" \? "Help" 2> $mainmen
   RESULT=$(cat $mainmen)
   if [[ $? = "0" ]]; then
     case $RESULT in
