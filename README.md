@@ -28,3 +28,5 @@ This guide explains how to:
   - Encrypt files
 
 #### Creating Your GPG Key
+
+WIP
