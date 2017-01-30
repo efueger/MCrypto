@@ -97,6 +97,8 @@ tag_color = (BLUE,WHITE,ON)
 # Selected tag color
 tag_selected_color = (YELLOW,GREEN,ON)
 
+title_color = (BLACK,WHITE,ON)
+
 # Tag key color
 tag_key_color = (BLACK,WHITE,OFF)
 
