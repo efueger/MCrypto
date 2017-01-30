@@ -1,7 +1,7 @@
 #!/bin/sh
 
-temp1=/tmp/mcrypto_1_$$
-temp2=/tmp/mcrypto_2_$$
+mainmen=/tmp/mcrypto_1_$$
+keyfile=/tmp/mcrypto_2_$$
 temp3=/tmp/mcrypto_3_$$
 dconfs=/tmp/mcrypto_dconf_$$
 tempdir=/tmp/mcryptod_$$
@@ -23,16 +23,23 @@ function quit()
 
 function encrypt()
 {
-  osascript getFiles.applescript
+  ruby encrypt.rb
 }
+
+function showall()
+{
+  KEYS=$(ruby getkeys.rb)
+  echo $KEYS > $keyfile
+  dialog --title "Public Keys" --exit-label "Main Menu" --textbox $keyfile 10 60
+ }
 
 mkdir $tempdir $encdir $decdir $tardir
 ruby updatechecker.rb
 while true; do
   cat ~/.dialogrc > $dconfs
   cp .dialogrc ~/.dialogrc
-  dialog --ok-label "Select" --cancel-label "Exit"  --menu "MCrypto - Secure File Encryption" 20 40 8 🔐 "Encrypt" 🔓 "Decrypt" ↓ "Add Someone Else's Key" ↑ "Send My Key to Someone Else" + "Create a New Key" \* "Show All Keys" \? "Help" 2> $temp1
-  RESULT=$(cat $temp1)
+  dialog --ok-label "Select" --cancel-label "Exit"  --menu "  MCrypto - Secure File Encryption" 20 40 8 🔐 "Encrypt" 🔓 "Decrypt" ↓ "Add Someone Else's Key" ↑ "Send My Key to Someone Else" + "Create a New Key" \* "Show All Keys" \? "Help" 2> $mainmen
+  RESULT=$(cat $mainmen)
   if [[ $? = "0" ]]; then
     case $RESULT in
       🔐) encrypt ;;
@@ -40,7 +47,7 @@ while true; do
       ↓) echo "addkey" ;;
       ↑) echo "sendkey" ;;
       +) echo "makekey" ;;
-      \*) echo "showkeys" ;;
+      \*) showall ;;
       \?) helppage ;;
       *) quit ;;
     esac
