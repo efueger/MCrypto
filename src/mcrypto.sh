@@ -3,7 +3,7 @@
 VER=$(cat currentversion.conf)
 mainmen=/tmp/mcrypto_1_$$
 keyfile=/tmp/mcrypto_2_$$
-temp3=/tmp/mcrypto_3_$$
+nokeymen=/tmp/mcrypto_3_$$
 dconfs=/tmp/mcrypto_dconf_$$
 tempdir=/tmp/mcryptod_$$
 encdir=/tmp/mcryptod_$$/.dec
@@ -31,7 +31,16 @@ function showall()
 {
   ruby getkeys.rb > $keyfile
   KEYS=$(cat $keyfile)
-  dialog --title "Public Keys" --exit-label "Main Menu" --textbox $keyfile 20 90
+  if [[ $KEYS == "nokeys" ]]; then
+    dialog --ok-label "Select" --cancel-label "Main Menu" --menu "No Keys Avalible!" 20 40 8  + "Create a New Key" ↓ "Add Someone Else's Key" 2> $nokeymen
+    RESULT=$(cat $nokeymen)
+    case $RESULT in
+      +) echo "makekey" ;;
+      ↓) echo "addkey" ;;
+    esac
+  else
+    dialog --title "Public Keys" --exit-label "Main Menu" --textbox $keyfile 20 90
+  fi
  }
 
 mkdir $tempdir $encdir $decdir $tardir
