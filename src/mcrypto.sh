@@ -24,7 +24,7 @@ function quit()
 
 function encrypt()
 {
-  ruby encrypt.rb
+  ruby ~/.mcrypto/encrypt.rb
 }
 
 function showall()
@@ -58,7 +58,7 @@ while true; do
       ↑) echo "sendkey" ;;
       +) echo "makekey" ;;
       \*) showall ;;
-      \?) ruby openhelp.rb ;;
+      \?) ruby ~/.mcrypto/openhelp.rb ;;
       *) quit ;;
     esac
   else

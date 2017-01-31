@@ -61,13 +61,12 @@ install ()
   if [[ ! -d ~/.mcrypto/update/download ]]; then
     mkdir ~/.mcrypto/update/download
   fi
-  ruby download.rb
+  ruby ~/.mcrypto/update/download.rb
 
   # ruby download.rb
   echo "MCryto update sucessful!"
   read -p "Press [Enter] to reload the terminal."
   osascript ~/.mcrypto/relaunchTerm.applescript
-  exit
 }
 
 install

@@ -16,7 +16,7 @@ webversion = %x{wget -q -O /tmp/mcrypto_v_$$ https://raw.githubusercontent.com/A
 
 netspin.stop('Complete!'.green)
 
-localversion = %x{cat currentversion.conf}
+localversion = %x{cat ~/.mcrypto/currentversion.conf}
 
 if webversion == localversion then
   puts "You are up to date!".green
