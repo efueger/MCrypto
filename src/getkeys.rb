@@ -2,6 +2,7 @@ raw = %x{gpg --list-public-keys | grep uid}
 unparsed = Array.new
 parsed = Array.new()
 unparsed = raw.split("\n")
+
 if unparsed.size > 0
   unparsed.each do |x|
     if x.include? "]"

@@ -20,5 +20,21 @@ localversion = %x{cat currentversion.conf}
 if webversion == localversion then
   puts "You are up to date!"
 else
-  puts "An update is avalible. Install it now?"
+  while true do
+    puts "An update is avalible. Install it now? [Y / N]"
+    STDOUT.flush
+    res = gets.chomp
+      case res
+      when "y","Y"
+          %x{
+            cd update
+            ./install-update.sh
+          }
+          break
+        when "n","N"
+          break
+        else
+          puts "Please answer Y or N..."
+      end
+  end
 end
