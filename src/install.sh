@@ -29,29 +29,29 @@ install ()
   which brew |
   if [[ $? = "1" ]]; then
     echo "Could not find homwbrew, installing..."
-    #/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   else
     echo "Found homebrew installation... Updating"
-    #brew update
+    brew update
   fi
   which gpg2 |
   if [[ $? = "1" ]]; then
     echo "Could not find GPG, installing..."
-    #brew install gpg2
+    brew install gpg2
   else
     echo "Found GPG..."
   fi
   which dialog |
   if [[ $? = "1" ]]; then
     echo "Could not find dialog, installing..."
-    # brew install dialog
+    brew install dialog
   else
     echo "Found dialog..."
   fi
   which pv |
   if [[ $? = "1" ]]; then
     echo "Could not find pv, installing..."
-    # brew install pv
+    brew install pv
   else
     echo "Found pv..."
   fi

@@ -4,6 +4,7 @@ VER=$(cat ~/.mcrypto/currentversion.conf)
 mainmen=/tmp/mcrypto_1_$$
 keyfile=/tmp/mcrypto_2_$$
 nokeymen=/tmp/mcrypto_3_$$
+sends=/tmp/mcrypto_4_$$
 dconfs=/tmp/mcrypto_dconf_$$
 tempdir=/tmp/mcryptod_$$
 encdir=/tmp/mcryptod_$$/.dec
@@ -25,6 +26,24 @@ function quit()
 function encrypt()
 {
   ruby ~/.mcrypto/encrypt.rb
+}
+
+function sendkey()
+{
+  ruby ~/.mcrypto/getkeys.rb > $keyfile
+  KEYS=$(cat $keyfile)
+  if [[ $KEYS == "nokeys" ]]; then
+    dialog --ok-label "Select" --cancel-label "Main Menu" --menu "No Keys Avalible!" 20 40 8  + "Create a New Key" ↓ "Add Someone Else's Key" 2> $nokeymen
+    RESULT=$(cat $nokeymen)
+    case $RESULT in
+      +) echo "makekey" ;;
+      ↓) echo "addkey" ;;
+    esac
+  else
+    ruby ~/.mcrypto/parseforsend.rb > $sends
+    SENDKEY=$(cat $sends)
+    dialog --exit-label "Main Menu" --menu "Choose a Key to Send" 20 90 80 1 "dude"
+  fi
 }
 
 function showall()
@@ -55,7 +74,7 @@ while true; do
       🔐) encrypt ;;
       🔓) echo "decrypt" ;;
       ↓) echo "addkey" ;;
-      ↑) echo "sendkey" ;;
+      ↑) sendkey ;;
       +) echo "makekey" ;;
       \*) showall ;;
       \?) ruby ~/.mcrypto/openhelp.rb ;;
