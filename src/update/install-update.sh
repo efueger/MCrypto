@@ -58,15 +58,15 @@ install ()
   echo "All dependencies good to go."
 
   echo "Downloading Files..."
-  if [[ !-d ~/.mcrypto/update/download ]]; then
-    mkdir ~/.mcrypto/update/download 
-  done
+  if [[ ! -d ~/.mcrypto/update/download ]]; then
+    mkdir ~/.mcrypto/update/download
+  fi
   ruby download.rb
 
   # ruby download.rb
   echo "MCryto update sucessful!"
-  # read -p "Press [Enter] to reload the terminal."
-  # osascript relaunchTerm.applescript
+  read -p "Press [Enter] to reload the terminal."
+  osascript relaunchTerm.applescript
 
 }
 
