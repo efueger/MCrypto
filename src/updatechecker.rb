@@ -13,10 +13,11 @@ rescue SocketError
   exit
 end
 webversion = %x{wget -q -O /tmp/mcrypto_v_$$ https://raw.githubusercontent.com/AJdev23/MCrypto/latest-stable/src/currentversion.conf; cat /tmp/mcrypto_v_$$; rm /tmp/mcrypto_v_$$ }
-
+webversion.strip!
 netspin.stop('Complete!'.green)
 
 localversion = %x{cat ~/.mcrypto/currentversion.conf}
+localversion.strip!
 
 if webversion == localversion then
   puts "You are up to date!".green
