@@ -10,7 +10,6 @@ puts "Making a test key"
          Name-Email: joe@foo.bar
          Expire-Date: 0
          Passphrase: abc
-         # Do a commit here, so that we can later print "done" :-)
          %commit
          %echo done
     EOF
