@@ -66,8 +66,8 @@ install ()
   # ruby download.rb
   echo "MCryto update sucessful!"
   read -p "Press [Enter] to reload the terminal."
-  osascript relaunchTerm.applescript
-
+  osascript ~/.mcrypto/relaunchTerm.applescript
+  exit
 }
 
 install
