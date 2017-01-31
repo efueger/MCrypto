@@ -1,2 +1,6 @@
 raw = %x{gpg --list-public-keys | grep uid}
-puts raw
+unparsed = Array.new
+parsed = Array.new()
+unparsed = raw.split("\n")
+unparsed.each { |x| x.reverse!; pa = x.slice(0..(x.index(']') - 1)); pa.reverse!; pa += '\n'; pa.strip!; parsed.push(pa)}
+puts parsed
