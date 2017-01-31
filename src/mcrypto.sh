@@ -29,7 +29,7 @@ function encrypt()
 
 function showall()
 {
-  ruby getkeys.rb > $keyfile
+  ruby ~/.mcrypto/getkeys.rb > $keyfile
   KEYS=$(cat $keyfile)
   if [[ $KEYS == "nokeys" ]]; then
     dialog --ok-label "Select" --cancel-label "Main Menu" --menu "No Keys Avalible!" 20 40 8  + "Create a New Key" ↓ "Add Someone Else's Key" 2> $nokeymen
