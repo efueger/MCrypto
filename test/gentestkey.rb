@@ -15,4 +15,4 @@ puts "Making a test key"
          %echo done
     EOF
   }
-%x{gpg --batch --generate-key foo}
+%x{gpg --batch --gen-key foo}
