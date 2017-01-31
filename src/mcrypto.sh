@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VER=$(cat currentversion.conf)
+VER=$(cat ~/.mcrypto/currentversion.conf)
 mainmen=/tmp/mcrypto_1_$$
 keyfile=/tmp/mcrypto_2_$$
 nokeymen=/tmp/mcrypto_3_$$
