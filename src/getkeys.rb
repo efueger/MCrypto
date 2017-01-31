@@ -13,6 +13,10 @@ if unparsed.size > 0
 
   end
   puts parsed
+  module exported
+    exparsed = parsed
+  end
+
 else
   puts "nokeys"
 end

@@ -1,1 +1,2 @@
-puts "hello there my dude"
+raw = ARGV[0]
+puts raw

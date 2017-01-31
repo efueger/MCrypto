@@ -40,7 +40,7 @@ function sendkey()
       ↓) echo "addkey" ;;
     esac
   else
-    ruby ~/.mcrypto/parseforsend.rb > $sends
+    ruby ~/.mcrypto/parseforsend.rb $KEYS > $sends
     SENDKEY=$(cat $sends)
     dialog --exit-label "Main Menu" --menu "Choose a Key to Send" 20 90 80 1 "dude"
   fi
