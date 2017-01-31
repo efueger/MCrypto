@@ -58,7 +58,7 @@ while true; do
       ↑) echo "sendkey" ;;
       +) echo "makekey" ;;
       \*) showall ;;
-      \?) helppage ;;
+      \?) ruby openhelp.rb ;;
       *) quit ;;
     esac
   else

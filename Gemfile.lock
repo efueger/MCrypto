@@ -1,11 +1,17 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.5.0)
+      public_suffix (~> 2.0, >= 2.0.2)
     applescript (1.0)
     codeclimate-test-reporter (1.0.5)
       simplecov
+    colorize (0.8.1)
     docile (1.1.5)
     json (2.0.3)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    public_suffix (2.0.5)
     rake (12.0.0)
     simplecov (0.13.0)
       docile (~> 1.1.0)
@@ -20,6 +26,8 @@ PLATFORMS
 DEPENDENCIES
   applescript (~> 1.0)
   codeclimate-test-reporter (~> 1.0.0)
+  colorize
+  launchy
   rake (>= 0.9.2)
   simplecov (~> 0.13.0)
   tty-spinner
