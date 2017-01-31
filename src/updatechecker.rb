@@ -28,7 +28,7 @@ else
       case res
       when "y","Y"
           %x{
-            cd update
+            cd ~/.mcrypto/update
             ./install-update.sh
           }
           break
