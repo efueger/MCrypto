@@ -29,9 +29,9 @@ function encrypt()
 
 function showall()
 {
-  KEYS=$(ruby getkeys.rb)
-  echo $KEYS > $keyfile
-  dialog --title "Public Keys" --exit-label "Main Menu" --textbox $keyfile 10 60
+  ruby getkeys.rb > $keyfile
+  KEYS=$(cat $keyfile)
+  dialog --title "Public Keys" --exit-label "Main Menu" --textbox $keyfile 20 90
  }
 
 mkdir $tempdir $encdir $decdir $tardir
