@@ -44,7 +44,7 @@ function showall()
  }
 
 mkdir $tempdir $encdir $decdir $tardir
-ruby updatechecker.rb
+ruby ~/.mcrypto/updatechecker.rb
 while true; do
   cat ~/.dialogrc > $dconfs
   cp .dialogrc ~/.dialogrc
